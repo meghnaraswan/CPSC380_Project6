@@ -10,7 +10,7 @@
 
 ## Source Files
 
-* prodcon.cpp
+* vmmgr.c
 
 ## References
 
@@ -26,8 +26,4 @@
 
 ## Execution Instructions
 
-* ./prodcon <delay> <#producer threads> <#consumer threads>
-* Example:
-- ./prodcon 10 2 3
-- ./prodcon 1 2 3
-
+* ./vmmgr BACKING_STORE.bin addresses.txt
