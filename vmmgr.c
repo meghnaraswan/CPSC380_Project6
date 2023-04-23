@@ -107,21 +107,25 @@ int translate_address(int logical_address) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s BACKING_STORE.bin addresses.txt\n", argv[0]);
-        return EXIT_FAILURE;
+
+    // Check for correct usage
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s addresses.txt\n", argv[0]);
+        return 0;
     }
 
-    backing_store = fopen(argv[1], "rb");
-    if (backing_store == NULL) {
-        fprintf(stderr, "Could not open backing store file: %s\n", argv[1]);
-        return EXIT_FAILURE;
-    }
-
-    addresses = fopen(argv[2], "r");
+    // Open input file with 1,000 logical addresses ranging from 0 to 65535 (addresses.txt)
+    addresses = fopen(argv[1], "r");
     if (addresses == NULL) {
-        fprintf(stderr, "Could not open addresses file: %s\n", argv[2]);
-        return EXIT_FAILURE;
+        fprintf(stderr, "Could not open addresses file: %s\n", argv[1]);
+        return 0;
+    }
+
+    // Open backing store binary file (BACKING_STORE.bin)
+    backing_store = fopen("BACKING_STORE.bin", "rb");
+    if (backing_store == NULL) {
+        fprintf(stderr, "Could not open backing store file: BACKING_STORE.bin \n");
+        return 0;
     }
 
     // Initialize page table to all TLB_MISS

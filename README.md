@@ -26,4 +26,4 @@
 
 ## Execution Instructions
 
-* ./vmmgr BACKING_STORE.bin addresses.txt
+* ./vmmgr addresses.txt
